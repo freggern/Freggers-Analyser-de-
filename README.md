@@ -36,7 +36,7 @@ Versionshistory
 Funktionsbeschreibung
 ---------------------
 
-`$neuerFregger = new FW_API_FREGGERSANALYSER (Sting mit Freggersname, String mit Freggersserver, true or false);`
+`$neuerFregger = new Freggeranalyser (Sting mit Freggersname, String mit Freggersserver, true or false);`
 
 `Freggersname`   => Hier wird angegeben welcher Freggersname analysiert werden soll
 `Freggersserver` => Hier wird angegeben auf welchem Server sich der Freggers besfindet (Nur Domainendung de oder com angeben)
