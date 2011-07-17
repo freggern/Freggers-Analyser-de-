@@ -70,10 +70,6 @@
   echo $neuerFregger->data["NAME"];
  * */
 
-namespace FreggerWiki\API;
-
-use FreggersWiki\API as FW_API;
-
 //error_reporting(E_ERROR | E_WARNING | E_PARSE ); // debug line
 
 class Freggeranalyser {
