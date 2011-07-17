@@ -49,7 +49,7 @@ Rückgabe:<br>
 Wenn der Freggers nicht existiert werden leere Felder zurückgegeben<br>
 <br>
 Zurückgabe bei einem existierenden Freggers mit Beispielwerten:<br>
-`data(
+```data(
 	//Ab hier getProfile();
 	[NAME] => freggern
 	[SERVER] => de
@@ -76,6 +76,6 @@ Zurückgabe bei einem existierenden Freggers mit Beispielwerten:<br>
 
 	//Ab hier getGeschlecht();
 	[GESCHLECHT] => 2
-);
+);```
 
-echo $neuerFregger->data["NAME"];`
+echo $neuerFregger->data["NAME"];
