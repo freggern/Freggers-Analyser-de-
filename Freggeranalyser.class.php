@@ -125,7 +125,7 @@ class Freggeranalyser {
 			//Lade Profilseite herunter
 			$this->content = @file_get_contents('http://www.freggers.'.$this->data["SERVER"].'/sidebar/profile/user/'.$this->data["NAME"].'?v='.date('YmdHis'));
 			if ($this->content) {
-				//Bereinige Webseitencode von Tabs und umbr�chen
+				//Bereinige Webseitencode von Tabs und umbrüchen
 				$this->content = preg_replace("/\s+/", " ", $this->content);
 
 				//FreggersID
@@ -189,7 +189,7 @@ class Freggeranalyser {
 					$this->data["ADMIN"] = false;
 				}
 
-				//Wohnungsgr��e
+				//Wohnungsgröße
 				preg_match("/roomgui=\"plattenbau.eigenheim(.*?)\";/", $this->content, $this->cache);
 				$this->data["ZIMMERANZAHL"] = intval($this->cache[1]);
 
