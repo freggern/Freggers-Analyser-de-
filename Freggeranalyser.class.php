@@ -18,7 +18,7 @@
   0.1
   -Nun Objektorentiert.
   -Fix Abzeichen Gesamt + Abzeichen fertig
-  -Entfernen un�tiger Variablen
+  -Entfernen unötiger Variablen
   0.2
   -Fixe Geschlechtererkennung
   -Kommentierung verbessert
@@ -35,7 +35,7 @@
   $neuerFregger->getGeschlecht(); //Benötigt getProfile();
 
   Rückgabe:
-  Wenn der Freggers nicht existiert werden leere Felder zur�ckgegeben
+  Wenn der Freggers nicht existiert werden leere Felder zurückgegeben
 
   Zurückgabe bei einem existierenden Freggers mit Beispielwerten:
   ->data(

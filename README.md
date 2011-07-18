@@ -10,7 +10,7 @@ Version
 
 Author
 ------
-Bernhard Eisele / GitHub Community
+Bernhard Eisele / kurtextrem / GitHub Community
 
 License
 -------
@@ -43,13 +43,13 @@ Funktionsbeschreibung
 `true - false`   => Hier wird angegeben ob alles analysiert wird oder man kann die einzelnen Schritte auch per Hand durchgehen<br>
 					`$neuerFregger->getProfile();
 					$neuerFregger->getHP();
-					$neuerFregger->getGeschlecht(); //Benötigt getProfile();`
+					$neuerFregger->getGeschlecht(); //Benötigt getProfile();`<br>
 <br>
 Rückgabe:<br>
 Wenn der Freggers nicht existiert werden leere Felder zurückgegeben<br>
 <br>
 Zurückgabe bei einem existierenden Freggers mit Beispielwerten:<br>
-```data(
+`data(
 	//Ab hier getProfile();
 	[NAME] => freggern
 	[SERVER] => de
@@ -76,6 +76,6 @@ Zurückgabe bei einem existierenden Freggers mit Beispielwerten:<br>
 
 	//Ab hier getGeschlecht();
 	[GESCHLECHT] => 2
-);```
+);`
 
 echo $neuerFregger->data["NAME"];
