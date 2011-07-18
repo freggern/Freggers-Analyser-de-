@@ -36,11 +36,11 @@ Versionshistory
 Funktionsbeschreibung
 ---------------------
 
-`$neuerFregger = new Freggeranalyser (Sting mit Freggersname, String mit Freggersserver, true or false);`
+`$neuerFregger = new Freggeranalyser (String mit Freggersname, String mit Freggersserver, true or false);`
 <br>
 `Freggersname`   => Hier wird angegeben welcher Freggersname analysiert werden soll<br>
-`Freggersserver` => Hier wird angegeben auf welchem Server sich der Freggers besfindet (Nur Domainendung de oder com angeben)<br>
-`true - false`   => Hier wird angegeben ob alles analysiert wird oder man kann die einzelnen Schritte auch per Hand durchgehen<br>
+`Freggersserver` => Hier wird angegeben auf welchem Server sich der Fregger besfindet (Nur Domainendung de oder com angeben)<br>
+`true - false`   => Hier wird angegeben ob alles analysiert wird oder man kann die einzelnen Schritte auch per Hand durchgehen, *Standard ist `false`*<br>
 					`$neuerFregger->getProfile();
 					$neuerFregger->getHP();
 					$neuerFregger->getGeschlecht(); //Benötigt getProfile();`<br>
@@ -49,7 +49,9 @@ Rückgabe:<br>
 Wenn der Freggers nicht existiert werden leere Felder zurückgegeben<br>
 <br>
 Zurückgabe bei einem existierenden Freggers mit Beispielwerten:<br>
-`data(
+
+`
+data(
 	//Ab hier getProfile();
 	[NAME] => freggern
 	[SERVER] => de
@@ -76,6 +78,7 @@ Zurückgabe bei einem existierenden Freggers mit Beispielwerten:<br>
 
 	//Ab hier getGeschlecht();
 	[GESCHLECHT] => 2
-);`
+);
 
 echo $neuerFregger->data["NAME"];
+`
