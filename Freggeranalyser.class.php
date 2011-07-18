@@ -1,74 +1,12 @@
 <?php
 
 /**
- * Name         : FW_API_FREGGERSANALYSER
- * Beschreibung : Ermöglicht das auslesen bestimmter Informationen vom Freggers Server
- * Version      : 0.1
- * Autor        : Bernhard Eisele 2011
- * License      : CC BY-SA 3.0 (http://creativecommons.org/licenses/by-sa/3.0/de/)
-
-  ACHTUNG ZUM AUSLESEN VON DATEN BRAUCHT IHR DIE ERLAUBNIS VON DEN MACHERN VON FREGGERS
-  => http://www.freggers.de/help/imprint
-
-  Versionshistory
-  0.1 RC1
-  -Auslesen aller wichtigen Daten
-  0.1 RC2
-  -Auslesen der Daten von Garten des Fauns
-  0.1
-  -Nun Objektorentiert.
-  -Fix Abzeichen Gesamt + Abzeichen fertig
-  -Entfernen unötiger Variablen
-  0.2
-  -Fixe Geschlechtererkennung
-  -Kommentierung verbessert
-
-  Funktionsbeschreibung:
-
-  $neuerFregger = new Freggeranalyser (Sting mit Freggersname, String mit Freggersserver, true or false);
-
-  Freggersname     => Hier wird angegeben welcher Freggersname analysiert werden soll
-  Freggersserver   => Hier wird angegeben auf welchem Server sich der Freggers besfindet (Nur Domainendung de oder com angeben)
-  true - false     => Hier wird angegeben ob alles analysiert wird oder man kann die einzelnen Schritte auch per Hand durchgehen
-  $neuerFregger->getProfile();
-  $neuerFregger->getHP();
-  $neuerFregger->getGeschlecht(); //Benötigt getProfile();
-
-  Rückgabe:
-  Wenn der Freggers nicht existiert werden leere Felder zurückgegeben
-
-  Zurückgabe bei einem existierenden Freggers mit Beispielwerten:
-  ->data(
-  //Ab hier getProfile();
-  [NAME] => freggern
-  [SERVER] => de
-  [ID] => 428488
-  [ALTER] => 0
-  [ORT] => Puck / Azubi-Garten
-  [ONLINE] => 1
-  [FREETOADS] => 55039
-  [ONLINESTUNDEN] => 3171
-  [INVENTARWERT] => 8570
-  [WEBSEITE] => http://www.freggers-wiki.de/umfrage/index.php?sid=51929
-  [FREUNDE] => 6
-  [FREUNDEONLINE] => 0
-  [SERVEROP] =>
-  [ADMIN] =>
-  [ZIMMERANZAHL] => 4
-  [TEAMNAME] => Puck
-  [TEAMMITGLIEDER] => 4713
-  [FAUNLEVEL] => 7
-
-  //Ab hier getHP();
-  [ABZEICHENGESAMT] => 31
-  [ABZEICHENFERTIG] => 27
-
-  //Ab hier getGeschlecht();
-  [GESCHLECHT] => 2
-  );
-
-  echo $neuerFregger->data["NAME"];
- * */
+ * Funktion zum Analysieren von einem Fregger(s Profil).
+ *
+ * @author Freggern / Kurtextrem
+ * @license CC BY-SA <http://creativecommons.org/licenses/by-sa/3.0/>
+ * @see <https://github.com/freggern/Freggers-Analyser-de-> für mehr Details.
+ */
 
 //error_reporting(E_ERROR | E_WARNING | E_PARSE ); // debug line
 
@@ -121,6 +59,25 @@ class Freggeranalyser {
 		}
 	}
 
+	/**
+	 * Fügt FreggerID,
+	 * Freggerasname,
+	 * Alter,
+	 * Ort,
+	 * Online (boolean),
+	 * erhaltene Freikröten,
+	 * Online Stunden,
+	 * Inventarwert,
+	 * Website,
+	 * Freunde,
+	 * Serverop (boolean),
+	 * Admin (boolean),
+	 * Wohnungsgröße (integer),
+	 * Teamname,
+	 * Team Mitglieder (integer),
+	 * Faun Level (integer)
+	 * zu $this->data hinzu.
+	 */
 	public function getProfile() {
 		if ($this->analysed[0] == 0) {
 			$this->analysed[0] = 1;
@@ -130,11 +87,11 @@ class Freggeranalyser {
 				// Bereinige Webseitencode von Tabs und umbrüchen
 				$this->content = preg_replace('/\s+/', ' ', $this->content);
 
-				// FreggersID
+				// FreggerID
 				preg_match("/javascript:zoomFregger\(\'(.*?)\'\)\">/", $this->content, $this->cache);
 				$this->data['ID'] = intval($this->cache[1]);
 
-				// FreggersName
+				// Freggersname
 				preg_match('/flashvars.username="(.*?)";/', $this->content, $this->cache);
 				$this->data['NAME'] = $this->cache[1];
 
@@ -215,6 +172,9 @@ class Freggeranalyser {
 		}
 	}
 
+	/**
+	 * Fügt die Homepage des Freggers zu $this->data hinzu.
+	 */
 	public function getHP() {
 		if ($this->analysed[1] == 0) {
 			$this->analysed[1] = 1;
@@ -251,6 +211,9 @@ class Freggeranalyser {
 		}
 	}
 
+	/**
+	 * Fügt das Geschlecht des Freggers zu $this->data hinzu.
+	 */
 	public function getGeschlecht() {
 		//Geschlecht
 		if ($this->analysed[2] == 0) {
