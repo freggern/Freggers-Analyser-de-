@@ -32,6 +32,8 @@ Versionshistory
  * 0.2
 	 * Fixe Geschlechtererkennung
 	 * Kommentierung verbessert
+ * 0.3
+     * Anpassem der Geschlechtererkennung
 
 Funktionsbeschreibung
 ---------------------

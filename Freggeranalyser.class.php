@@ -4,6 +4,7 @@
  * Funktion zum Analysieren von einem Fregger(s Profil).
  *
  * @author Freggern / Kurtextrem
+ * @version 0.3
  * @license CC BY-SA <http://creativecommons.org/licenses/by-sa/3.0/>
  * @see <https://github.com/freggern/Freggers-Analyser-de-> für mehr Details.
  */
@@ -229,11 +230,12 @@ class Freggeranalyser {
 				if ($this->cache == 0) {
 					$this->data['GESCHLECHT'] = '3'; //männlich
 				}
+				imagedestroy($this->content); // free memory
 			} else {
-				$this->data['GESCHLECHT'] = 'error'; // image download failed
+				$this->data['GESCHLECHT'] = '2'; // image download failed
 			}
 
-			imagedestroy($this->content); // free memory
+			
 		} else {
 			//Geschlecht wurde schonmal analysiert
 		}
